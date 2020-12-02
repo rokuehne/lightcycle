@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		119E18B925782D5800533628 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 119E18B825782D5800533628 /* ArgumentParser */; };
 		119E18C825783C8200533628 /* ImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E18BE25783AF100533628 /* ImageReader.swift */; };
+		119E18CE2578446600533628 /* ImageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E18CD2578446600533628 /* ImageWriter.swift */; };
 		OBJ_24 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_42 /* LightCycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* LightCycleTests.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		119E18BE25783AF100533628 /* ImageReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReader.swift; sourceTree = "<group>"; };
+		119E18CD2578446600533628 /* ImageWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWriter.swift; sourceTree = "<group>"; };
 		"LightCycle::LightCycle::Product" /* LightCycle */ = {isa = PBXFileReference; lastKnownFileType = text; path = LightCycle; sourceTree = BUILT_PRODUCTS_DIR; };
 		"LightCycle::LightCycleTests::Product" /* LightCycleTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LightCycleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* LightCycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCycleTests.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				OBJ_9 /* main.swift */,
 				119E18BE25783AF100533628 /* ImageReader.swift */,
+				119E18CD2578446600533628 /* ImageWriter.swift */,
 			);
 			name = LightCycle;
 			path = Sources/LightCycle;
@@ -225,6 +228,7 @@
 			buildActionMask = 0;
 			files = (
 				119E18C825783C8200533628 /* ImageReader.swift in Sources */,
+				119E18CE2578446600533628 /* ImageWriter.swift in Sources */,
 				OBJ_24 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

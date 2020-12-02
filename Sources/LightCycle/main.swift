@@ -5,7 +5,7 @@ enum Mode: String, ExpressibleByArgument {
 	case create
 }
 
-struct LightCycle: ParsableCommand, ImageReader {
+struct LightCycle: ParsableCommand, ImageReader, ImageWriter {
 	
 	@Argument(help: "The mode of the operation. (options: create)")
 	var mode: Mode = .create
@@ -35,8 +35,7 @@ struct LightCycle: ParsableCommand, ImageReader {
 		
 		switch mode {
 		case .create:
-			print(dayImage.size)
-			print(nightImage.size)
+			try writeImage(dayImage, to: outputImageUrl)
 			print(mode.rawValue)
 		}
 	}
@@ -46,7 +45,7 @@ struct LightCycle: ParsableCommand, ImageReader {
 extension URL: ExpressibleByArgument {
 	
 	public init?(argument: String) {
-		self.init(string: argument)
+		self.init(fileURLWithPath: argument)
 	}
 	
 }
