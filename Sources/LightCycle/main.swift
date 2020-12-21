@@ -7,6 +7,10 @@ enum Mode: String, ExpressibleByArgument {
 
 struct LightCycle: ParsableCommand, ImageReader, ImageWriter {
 	
+	static let configuration = CommandConfiguration(
+		version: "\(Manifest.name), Version \(Manifest.versionDescription)"
+	)
+
 	@Argument(help: "The mode of the operation. (options: create)")
 	var mode: Mode = .create
 	
