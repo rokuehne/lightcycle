@@ -16,35 +16,29 @@ enum ImageWriteError: Error {
 }
 
 protocol ImageWriter {
-	
+
 }
 
 extension ImageWriter {
-	
+
 	var imageRepresentationProperties: [NSBitmapImageRep.PropertyKey: Any] {
 		[:]
 	}
-	
+
 	func writeImage(_ image: NSImage, to url: URL) throws {
 		guard let bitmap = bitmapRepresentation(from: image) else {
 			throw ImageWriteError.missingBitmapRepresentation
 		}
-		
+
 		guard let convertedImage = CIImage(bitmapImageRep: bitmap) else {
 			throw ImageWriteError.notConvertibleImage
 		}
-		
-		try CIContext().writeHEIFRepresentation(of: convertedImage, to: url, format: .A8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:])
-		
-		guard let representation = bitmap.representation(using: .jpeg, properties: imageRepresentationProperties) else {
-			throw ImageWriteError.unwritableFileType
-		}
-		
-		try representation.write(to: url)
+
+		try CIContext().writeHEIFRepresentation(of: convertedImage, to: url, format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:])
 	}
-	
+
 	private func bitmapRepresentation(from image: NSImage) -> NSBitmapImageRep? {
 		return image.representations.first as? NSBitmapImageRep
 	}
-	
+
 }
