@@ -7,10 +7,12 @@
 
 import Foundation
 import AppKit.NSImage
+import CoreImage
 
 enum ImageWriteError: Error {
 	case missingBitmapRepresentation
 	case unwritableFileType
+	case notConvertibleImage
 }
 
 protocol ImageWriter {
@@ -27,6 +29,12 @@ extension ImageWriter {
 		guard let bitmap = bitmapRepresentation(from: image) else {
 			throw ImageWriteError.missingBitmapRepresentation
 		}
+		
+		guard let convertedImage = CIImage(bitmapImageRep: bitmap) else {
+			throw ImageWriteError.notConvertibleImage
+		}
+		
+		try CIContext().writeHEIFRepresentation(of: convertedImage, to: url, format: .A8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, options: [:])
 		
 		guard let representation = bitmap.representation(using: .jpeg, properties: imageRepresentationProperties) else {
 			throw ImageWriteError.unwritableFileType
